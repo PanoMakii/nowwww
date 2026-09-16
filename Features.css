@@ -1,0 +1,340 @@
+.features {
+    padding: 6rem 8%;
+    background: transparent;
+}
+
+
+
+.features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.feature-card {
+    /* background: linear-gradient(180deg,
+            #FFFFFF 0%,
+            #FAFFF8 100%);
+
+    border: 1px solid rgba(46, 125, 50, .08); */
+        background: rgba(255,255,255,.15);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    transition: .35s ease;
+
+    border-radius: 28px;
+
+    padding: 2rem;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        border-color .35s ease;
+
+    will-change: transform;
+
+    cursor: pointer;
+
+}
+
+.feature-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 4px;
+
+    background: linear-gradient(90deg,
+
+            #8BC34A,
+
+            #4CAF50);
+
+    transform: scaleX(0);
+
+    transform-origin: left;
+
+    transition: .35s ease;
+
+}
+
+.feature-card:hover::before {
+
+    transform: scaleX(1);
+
+}
+
+.feature-card:hover {
+
+    transform:
+        translateY(-10px);
+
+    scale(1.02);
+
+    border-color: rgba(76, 175, 80, .25);
+
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, .08);
+
+
+
+}
+
+.feature-icon {
+
+    width: 64px;
+
+    height: 64px;
+
+    border-radius: 18px;
+
+    background: linear-gradient(135deg,
+            #E8F5E9,
+            #F7FFF6);
+
+    color: #2E7D32;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-bottom: 1.5rem;
+
+    transition:
+        transform .35s ease,
+        background .35s ease;
+
+}
+
+.feature-card:hover .feature-icon {
+
+    transform:
+        rotate(-8deg) scale(1.08);
+
+}
+
+.feature-card h3 {
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+
+    margin-bottom: .8rem;
+
+}
+
+.feature-card p {
+
+    color: #6B7280;
+
+    line-height: 1.8;
+
+    font-size: .97rem;
+
+}
+
+.feature-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: .5rem;
+
+    border: none;
+
+    background: none;
+
+    color: #2E7D32;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    padding: 0;
+
+    transition: gap .3s ease;
+
+}
+
+.feature-link svg {
+
+    transition:
+        transform .3s ease;
+
+}
+
+.feature-card:hover .feature-link {
+
+    gap: .8rem;
+
+}
+
+.feature-card:hover .feature-link svg {
+
+    transform:
+        translateX(4px);
+
+}
+
+
+@keyframes floatCard{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-4px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+.feature-card:nth-child(2){
+
+animation:floatCard 6s ease-in-out infinite;
+
+}
+
+.feature-card:nth-child(5){
+
+animation:floatCard 6s ease-in-out infinite 2s;
+
+}
+
+/* ===========================================================
+   RESPONSIVE
+   3 columns -> 2 -> 1 as the viewport narrows. The floating
+   animation stays on cards 2 & 5 at the 2-column tablet size
+   (they still land in a reasonable top/bottom spread there) but
+   switches to card 1 only once it's a single column, since 2 & 5
+   floating independently down a single stack reads as arbitrary
+   rather than a deliberate rhythm.
+   =========================================================== */
+
+@media (max-width: 900px) {
+
+    .features{
+
+        padding:5rem 6%;
+
+    }
+
+    .features-grid{
+
+        grid-template-columns:repeat(2, 1fr);
+
+        gap:1.5rem;
+
+        margin-top:3rem;
+
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .features{
+
+        padding:4rem 6%;
+
+    }
+
+    .features-grid{
+
+        grid-template-columns:1fr;
+
+        gap:1.25rem;
+
+        margin-top:2.5rem;
+
+    }
+
+    .feature-card{
+
+        padding:1.5rem;
+
+    }
+
+    .feature-icon{
+
+        width:52px;
+
+        height:52px;
+
+        border-radius:14px;
+
+        margin-bottom:1.1rem;
+
+    }
+
+    .feature-icon svg{
+
+        width:24px;
+
+        height:24px;
+
+    }
+
+    .feature-card h3{
+
+        font-size:1.15rem;
+
+    }
+
+    .feature-card p{
+
+        font-size:.92rem;
+
+        line-height:1.7;
+
+    }
+
+    .feature-card:nth-child(2),
+    .feature-card:nth-child(5){
+
+        animation:none;
+
+    }
+
+    .feature-card:nth-child(1){
+
+        animation:floatCard 6s ease-in-out infinite;
+
+    }
+
+}

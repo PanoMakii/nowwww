@@ -1,0 +1,73 @@
+.floating{
+
+    position:absolute;
+
+    animation:float 6s ease-in-out infinite;
+
+    user-select:none;
+
+    pointer-events:none;
+
+}
+
+.avocado{
+
+    width:72px;
+
+    top:10px;
+
+    left:-30px;
+
+}
+
+.strawberry{
+
+    width:50px;
+
+    bottom:100px;
+
+    left:-40px;
+
+}
+
+.broccoli{
+
+    width:65px;
+
+    top:110px;
+
+    right:-35px;
+
+}
+
+.lemon{
+
+    width:48px;
+
+    bottom:20px;
+
+    right:-25px;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}

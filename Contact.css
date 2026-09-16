@@ -1,0 +1,656 @@
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact {
+    padding: 7rem 0;
+    background: transparent;
+    overflow: hidden;
+}
+
+.contact-header {
+    margin-bottom: 4rem;
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+.contact-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.85fr)
+        minmax(0, 1.15fr);
+
+    gap: 4rem;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    min-height: 100%;
+}
+
+.contact-intro {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 1rem;
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8f5e9,
+            #f7fff6
+        );
+
+    color: #4f7942;
+}
+
+.contact-intro h3 {
+    margin: 0 0 0.5rem;
+
+    font-family: var(--heading);
+
+    font-size: 1.8rem;
+    line-height: 1.15;
+
+    color: var(--black);
+}
+
+.contact-intro p {
+    max-width: 470px;
+
+    margin: 0;
+
+    color: var(--text);
+
+    line-height: 1.75;
+}
+
+.contact-email {
+    width: fit-content;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 0.6rem;
+
+    margin-top: 2rem;
+
+    color: var(--tertiary);
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.contact-cta {
+    margin-top: 3rem;
+
+    padding: 2rem;
+
+    border-radius: 26px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(244, 196, 48, 0.14),
+            rgba(79, 121, 66, 0.10)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.38);
+}
+
+.contact-cta > span {
+    display: block;
+
+    margin-bottom: 0.8rem;
+
+    color: var(--tertiary);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+}
+
+.contact-cta h3 {
+    margin: 0 0 1.5rem;
+
+    font-family: var(--heading);
+
+    font-size: 2rem;
+    line-height: 1.15;
+
+    color: var(--black);
+}
+
+/* =========================================================
+   WEEKLY GASTRONOME
+========================================================= */
+
+.contact-newsletter {
+    margin-top: 2rem;
+
+    padding: 1.8rem 0 0;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.contact-newsletter-label {
+    display: block;
+
+    margin-bottom: 0.7rem;
+
+    color: var(--tertiary);
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 0.1em;
+}
+
+.contact-newsletter h3 {
+    margin: 0 0 0.7rem;
+
+    font-family: var(--heading);
+
+    font-size: 2rem;
+    line-height: 1.1;
+
+    color: var(--black);
+}
+
+.contact-newsletter p {
+    max-width: 430px;
+
+    margin: 0 0 1.2rem;
+
+    font-size: 0.92rem;
+    line-height: 1.7;
+
+    color: var(--text);
+}
+
+
+/* =========================================================
+   NEWSLETTER FORM
+========================================================= */
+
+.newsletter-form {
+    display: flex;
+
+    gap: 0.6rem;
+
+    width: 100%;
+}
+
+.newsletter-form input {
+    min-width: 0;
+    flex: 1;
+
+    padding: 0.85rem 1rem;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    color: var(--black);
+
+    font: inherit;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.newsletter-form input::placeholder {
+    color: #888;
+}
+
+.newsletter-form input:focus {
+    background: rgba(255, 255, 255, 0.32);
+
+    border-color:
+        rgba(79, 121, 66, 0.42);
+
+    box-shadow:
+        0 0 0 4px rgba(79, 121, 66, 0.08);
+}
+
+.newsletter-form button {
+    flex-shrink: 0;
+
+    padding: 0.85rem 1.25rem;
+
+    border: none;
+    border-radius: 999px;
+
+    background: var(--tertiary);
+    color: #fff;
+
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.newsletter-form button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 25px rgba(79, 121, 66, 0.22);
+}
+
+.contact-download {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 0.6rem;
+
+    padding: 0.9rem 1.3rem;
+
+    border-radius: 999px;
+
+    background: var(--tertiary);
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.contact-download:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 14px 30px rgba(79, 121, 66, 0.24);
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.contact-form {
+    padding: 2rem;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.30);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        inset 2px 2px 0 -2px rgba(255, 255, 255, 0.72),
+        inset 0 0 4px 1px rgba(255, 255, 255, 0.35),
+        0 20px 50px rgba(0, 0, 0, 0.07);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1.25rem;
+}
+
+.contact-field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.5rem;
+}
+
+.contact-field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+
+    color: var(--black);
+
+}
+
+.contact-select-wrap {
+    position: relative;
+}
+
+.contact-select-wrap select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding-right: 3rem;
+}
+
+.contact-select-icon {
+    position: absolute;
+
+    top: 50%;
+    right: 1rem;
+
+    transform: translateY(-50%);
+
+    pointer-events: none;
+
+    color: #6f756d;
+}
+
+.contact-field input,
+.contact-field select,
+.contact-field textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 0.9rem 1rem;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.40);
+
+    border-radius: 15px;
+
+    outline: none;
+
+    background:
+        rgba(255, 255, 255, 0.38);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    color: var(--black);
+
+    font: inherit;
+
+    transition:
+        border-color 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.contact-field textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+    color: #888;
+}
+
+.contact-field input:focus,
+.contact-field select:focus,
+.contact-field textarea:focus {
+    background:
+        rgba(255, 255, 255, 0.55);
+
+    border-color:
+        rgba(79, 121, 66, 0.42);
+
+    box-shadow:
+        0 0 0 4px rgba(79, 121, 66, 0.08);
+}
+
+.contact-submit {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.6rem;
+
+    margin-top: 0.5rem;
+
+    padding: 1rem 1.5rem;
+
+    border: none;
+    border-radius: 999px;
+
+    background: var(--tertiary);
+    color: white;
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.contact-submit:hover {
+    background: #456d3b;
+
+    box-shadow:
+        0 16px 35px rgba(79, 121, 66, 0.24);
+}
+
+.contact-submit-arrow {
+    transition: transform 0.3s ease;
+}
+
+.contact-submit:hover .contact-submit-arrow {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   Standardized to the same 900 / 600 / 400 tiers used across
+   Navbar, Hero, Features, and Testimonials. Migrates and extends
+   the responsive rules that were already here (the 900px stack +
+   min-height fix, the 480px form/cta tightening, the newsletter
+   stack) rather than replacing them outright, and fills the gaps:
+   a 600px tier that didn't exist before, .contact-newsletter h3
+   which never shrank while .contact-cta h3 did, and the
+   .contact-intro icon/heading row which never adjusted at all.
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .contact{
+
+        padding:5.5rem 0;
+
+    }
+
+    .contact-layout {
+
+        grid-template-columns: 1fr;
+
+        gap: 2.5rem;
+
+    }
+
+    .contact-info {
+
+        min-height: auto;
+
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .contact{
+
+        padding:4.5rem 0;
+
+    }
+
+    .contact-intro{
+
+        gap:.85rem;
+
+    }
+
+    .contact-icon{
+
+        width:40px;
+
+        height:40px;
+
+        border-radius:12px;
+
+    }
+
+    .contact-intro h3{
+
+        font-size:1.5rem;
+
+    }
+
+    .contact-cta{
+
+        margin-top:2.5rem;
+
+        padding:1.75rem;
+
+    }
+
+    .contact-cta h3{
+
+        font-size:1.7rem;
+
+    }
+
+    .contact-newsletter h3{
+
+        font-size:1.7rem;
+
+    }
+
+    .contact-newsletter p{
+
+        font-size:.88rem;
+
+    }
+
+    .contact-form {
+
+        padding: 1.5rem;
+
+        border-radius: 26px;
+
+    }
+
+    .newsletter-form {
+
+        flex-direction: column;
+
+    }
+
+    .newsletter-form button {
+
+        width: 100%;
+
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .contact{
+
+        padding:3.5rem 0;
+
+    }
+
+    .contact-intro{
+
+        flex-direction:column;
+
+    }
+
+    .contact-intro h3{
+
+        font-size:1.35rem;
+
+    }
+
+    .contact-cta {
+
+        padding: 1.4rem;
+
+    }
+
+    .contact-cta h3 {
+
+        font-size: 1.5rem;
+
+    }
+
+    .contact-newsletter h3{
+
+        font-size:1.5rem;
+
+    }
+
+    .contact-form {
+
+        padding: 1.1rem;
+
+        border-radius: 22px;
+
+    }
+
+    .contact-field textarea{
+
+        min-height:120px;
+
+    }
+
+    .contact-submit{
+
+        padding:.9rem 1.25rem;
+
+        font-size:.92rem;
+
+    }
+
+}

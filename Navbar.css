@@ -1,0 +1,316 @@
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 1.2rem 0;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+    padding: .9rem 2rem;
+
+    border-radius: 999px;
+
+    background: rgba(255,255,255,.15);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    transition: .35s ease;
+}
+
+
+.logo img{
+    height: 50px;
+    display: block;
+    transition: height .3s ease;
+}
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:2.5rem;
+
+    list-style:none;
+}
+
+.nav-links a{
+
+    text-decoration:none;
+
+    color:#222;
+
+    font-weight:500;
+
+    transition:.3s ease;
+}
+.nav-links a:hover{
+
+    color:#4F7942;
+
+}
+
+.download-btn{
+
+    text-decoration:none;
+
+    background:#4F7942;
+
+    color:white;
+
+    padding:.9rem 1.6rem;
+
+    border-radius:999px;
+
+    font-weight:600;
+
+    transition:.3s ease;
+}
+
+.download-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 12px 30px rgba(79,121,66,.25);
+
+}
+
+/* ===========================
+   MOBILE MENU TOGGLE
+=========================== */
+
+.menu-toggle{
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.35);
+
+    color:#222;
+
+    cursor:pointer;
+
+    transition:.3s ease;
+
+}
+
+.menu-toggle:hover{
+
+    background:rgba(255,255,255,.55);
+
+    color:#4F7942;
+
+}
+
+.menu-toggle:focus-visible{
+
+    outline:2px solid #4F7942;
+
+    outline-offset:2px;
+
+}
+
+/* ===========================
+   MOBILE OVERLAY + DROPDOWN
+=========================== */
+
+.mobile-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(30,26,15,.35);
+
+    backdrop-filter:blur(2px);
+
+    -webkit-backdrop-filter:blur(2px);
+
+}
+
+.mobile-menu{
+
+    position:absolute;
+
+    top:100%;
+
+    left:1rem;
+
+    right:1rem;
+
+    margin-top:.75rem;
+
+    padding:1.5rem;
+
+    border-radius:28px;
+
+    background:rgba(255,253,248,.92);
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.5);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.18);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:1.5rem;
+
+}
+
+.mobile-nav-links{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:.25rem;
+
+    list-style:none;
+
+}
+
+.mobile-nav-links a{
+
+    display:block;
+
+    padding:.85rem 1rem;
+
+    border-radius:14px;
+
+    color:#222;
+
+    font-weight:600;
+
+    font-size:1.05rem;
+
+    text-decoration:none;
+
+    transition:.25s ease;
+
+}
+
+.mobile-nav-links a:hover{
+
+    background:rgba(79,121,66,.08);
+
+    color:#4F7942;
+
+}
+
+.mobile-download-btn{
+
+    text-align:center;
+
+    justify-content:center;
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width:900px){
+
+    .nav-links,
+    .navbar > .download-btn{
+
+        display:none;
+
+    }
+
+    .menu-toggle{
+
+        display:flex;
+
+    }
+
+}
+
+@media (min-width:901px){
+
+    .mobile-overlay,
+    .mobile-menu{
+
+        display:none;
+
+    }
+
+}
+
+@media (max-width:600px){
+
+    .header{
+
+        padding:.9rem 0;
+
+    }
+
+    .navbar{
+
+        padding:.7rem 1.2rem;
+
+    }
+
+    .logo img{
+
+        height:40px;
+
+    }
+
+    .mobile-menu{
+
+        left:.75rem;
+
+        right:.75rem;
+
+        padding:1.25rem;
+
+    }
+
+}
+
+@media (max-width:360px){
+
+    .logo img{
+
+        height:34px;
+
+    }
+
+    .menu-toggle{
+
+        width:38px;
+
+        height:38px;
+
+    }
+
+}

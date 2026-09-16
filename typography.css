@@ -1,0 +1,33 @@
+body{
+
+    font-family:var(--body);
+
+    color:var(--text);
+
+}
+
+h1,h2,h3,h4,h5{
+
+    font-family:var(--heading);
+
+    color:var(--black);
+
+}
+
+h1{
+
+    font-size:4.8rem;
+
+}
+
+h2{
+
+    font-size:3rem;
+
+}
+
+p{
+
+    line-height:1.7;
+
+}

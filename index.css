@@ -1,0 +1,59 @@
+@import "./styles/variables.css";
+@import "./styles/typography.css";
+@import "./styles/utilities.css";
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    /* Was transparent — now that RecipeBackground is idle-deferred
+       (see App.jsx) rather than mounting instantly, there's a brief
+       window with nothing painting the canvas yet. This matches the
+       dark fallback color RecipeBackground.css already used, so that
+       gap reads as intentional instead of a flash of white. */
+    background:#1A1410;
+
+}
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+img{
+
+    display:block;
+
+    max-width:100%;
+
+}
+
+button,
+input{
+
+    font-family:inherit;
+
+}
+.container{
+    width:min(90%,1200px);
+    margin-inline:auto;
+}
+
+::selection{
+
+background:#F4C430;
+
+color:#1E1E1E;
+
+}

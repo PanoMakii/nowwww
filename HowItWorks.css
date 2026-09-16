@@ -1,0 +1,286 @@
+/* ===========================
+   HOW IT WORKS SECTION
+=========================== */
+
+.hiw {
+    padding: 6rem 0;
+    overflow: hidden;
+}
+
+/* ===========================
+   STEPS WRAPPER
+=========================== */
+
+.hiw-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    margin-top: 5rem;
+}
+
+/* ===========================
+   ROW (Z-PATTERN)
+=========================== */
+
+.hiw-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 5rem;
+}
+
+.hiw-row--reverse {
+    direction: rtl;
+}
+
+.hiw-row--reverse > * {
+    direction: ltr;
+}
+
+/* ===========================
+   TEXT BLOCK
+=========================== */
+
+.hiw-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 480px;
+}
+
+.hiw-step-number {
+    font-family: var(--heading);
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(79, 121, 66, .18);
+    letter-spacing: -2px;
+    user-select: none;
+}
+
+.hiw-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #E8F5E9, #F7FFF6);
+    color: #2E7D32;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(79, 121, 66, .12);
+    transition: transform .35s ease;
+}
+
+.hiw-text:hover .hiw-icon-wrap {
+    transform: rotate(-8deg) scale(1.08);
+}
+
+.hiw-text h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1.2;
+    letter-spacing: -.5px;
+}
+
+.hiw-text p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #6B7280;
+}
+
+.hiw-cta-btn {
+    align-self: flex-start;
+    background: #4F7942;
+    color: white;
+    border: none;
+    padding: .85rem 1.8rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: .95rem;
+    cursor: pointer;
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+    font-family: inherit;
+}
+
+.hiw-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(79, 121, 66, .28);
+}
+
+/* ===========================
+   PHONE PLACEHOLDER
+=========================== */
+
+.hiw-phone-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hiw-phone {
+    position: relative;
+    width: 280px;
+    height: 580px;
+    border-radius: 44px;
+    border: 8px solid #1B1B1B;
+    background: #fafafa;
+    overflow: hidden;
+    box-shadow:
+        0 45px 100px rgba(0, 0, 0, .15),
+        0 12px 40px rgba(79, 121, 66, .08);
+    animation: hiwPhoneFloat 6s ease-in-out infinite;
+}
+
+.hiw-phone-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 14px 18px 10px;
+}
+
+.hiw-phone-time {
+    font-size: .82rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.hiw-dynamic-island {
+    width: 100px;
+    height: 28px;
+    background: #111;
+    border-radius: 999px;
+}
+
+.hiw-phone-status {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+}
+
+.hiw-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #1B1B1B;
+    opacity: .35;
+}
+
+/* Placeholder screen content */
+.hiw-phone-screen {
+    padding: 1.2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: calc(100% - 60px);
+}
+
+.hiw-placeholder-label {
+    font-family: var(--heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #4F7942;
+    opacity: .5;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.hiw-placeholder-lines {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding: 0 .5rem;
+}
+
+.hiw-placeholder-lines span {
+    display: block;
+    height: 10px;
+    border-radius: 999px;
+    background: #E9ECEF;
+}
+
+.hiw-placeholder-lines span:nth-child(1) { width: 80%; }
+.hiw-placeholder-lines span:nth-child(2) { width: 65%; }
+.hiw-placeholder-lines span:nth-child(3) { width: 75%; }
+.hiw-placeholder-lines span:nth-child(4) { width: 55%; }
+
+.hiw-placeholder-card {
+    height: 110px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #E8F5E9, #F7FFF6);
+    border: 1px solid rgba(79, 121, 66, .1);
+}
+
+.hiw-card-sm {
+    height: 70px;
+}
+
+/* Shadow */
+.hiw-phone-shadow {
+    position: absolute;
+    bottom: -10px;
+    width: 200px;
+    height: 30px;
+    background: rgba(0, 0, 0, .1);
+    filter: blur(25px);
+    border-radius: 999px;
+}
+
+@keyframes hiwPhoneFloat {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+/* Alternate rows: slightly different float delay */
+.hiw-row:nth-child(even) .hiw-phone {
+    animation-delay: 1.5s;
+}
+
+/* ===========================
+   CONNECTING LINE BETWEEN STEPS
+=========================== */
+
+.hiw-steps > .hiw-row:not(:last-child) {
+    padding-bottom: 6rem;
+    border-bottom: 1px dashed rgba(79, 121, 66, .12);
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 900px) {
+    .hiw-row,
+    .hiw-row--reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .hiw-text {
+        align-items: center;
+        max-width: 100%;
+    }
+
+    .hiw-cta-btn {
+        align-self: center;
+    }
+
+    .hiw-step-number {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hiw-phone {
+        width: 240px;
+        height: 490px;
+    }
+}

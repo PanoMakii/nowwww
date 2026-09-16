@@ -1,0 +1,245 @@
+.dsc-phone-shadow {
+    position: absolute;
+    bottom: 10px;
+    width: 220px;
+    height: 34px;
+    background: rgba(0,0,0,.12);
+    filter: blur(30px);
+    border-radius: 999px;
+    z-index: 0;
+    opacity: .55;
+}
+
+.dsc-phone {
+    position: relative;
+    z-index: 2;
+    margin: auto;
+    width: 300px;
+    height: 620px;
+    border-radius: 46px;
+    border: 8px solid #1B1B1B;
+    background: #fafafa;
+    overflow: hidden;
+    transform: rotate(-4deg) scale(.90);
+    transition: transform .6s ease, box-shadow .6s ease;
+    box-shadow: 0 45px 100px rgba(0,0,0,.18), 0 12px 40px rgba(79,121,66,.08);
+    animation: dscPhoneFloat 6s ease-in-out infinite;
+    cursor: pointer;
+}
+
+.dsc-phone:hover {
+    transform: rotate(-2deg) translateY(-10px);
+    box-shadow: 0 60px 120px rgba(0,0,0,.20);
+}
+
+.dsc-phone::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -60%;
+    width: 40%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+    transform: skewX(-18deg);
+    pointer-events: none;
+}
+
+.dsc-phone-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 14px 18px 10px;
+}
+
+.dsc-phone-time { font-size: .82rem; font-weight: 700; }
+
+.dsc-dynamic-island {
+    position: relative;
+    width: 108px; height: 30px;
+    background: #111;
+    border-radius: 999px;
+    box-shadow: inset 0 1px 2px rgba(255,255,255,.08), 0 2px 4px rgba(0,0,0,.15);
+}
+
+.dsc-dynamic-island::after {
+    content: "";
+    position: absolute;
+    top: 5px; left: 18px;
+    width: 20px; height: 5px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.08);
+}
+
+.dsc-phone-status {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 6px;
+    color: #222;
+}
+
+.dsc-phone-content {
+    padding: 1rem 1rem 7.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dsc-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.dsc-label { font-size: .7rem; color: #8B8B8B; font-weight: 500; }
+.dsc-title { font-size: 1.2rem; font-weight: 700; color: #222; }
+
+.dsc-search-icon {
+    width: 34px; height: 34px;
+    border-radius: 10px;
+    background: #F5FAF2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tags */
+.dsc-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+
+.dsc-tag {
+    font-size: .65rem;
+    font-weight: 600;
+    padding: .28rem .65rem;
+    border-radius: 999px;
+    background: #f0f0f0;
+    color: #8B8B8B;
+    white-space: nowrap;
+}
+
+.dsc-tag-active {
+    background: #4F7942;
+    color: white;
+}
+
+/* Featured card */
+.dsc-featured {
+    background: linear-gradient(135deg, #F4C430, #FFD95A);
+    border-radius: 18px;
+    padding: .85rem;
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    position: relative;
+}
+
+.dsc-featured-emoji {
+    font-size: 2rem;
+    width: 48px; height: 48px;
+    background: rgba(255,255,255,.3);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dsc-featured-info { flex: 1; }
+
+.dsc-featured-badge {
+    display: inline-block;
+    font-size: .6rem;
+    font-weight: 700;
+    background: rgba(255,255,255,.35);
+    padding: .15rem .5rem;
+    border-radius: 999px;
+    margin-bottom: 3px;
+    color: #222;
+}
+
+.dsc-featured-info h5 { font-size: .9rem; font-weight: 700; color: #222; }
+.dsc-featured-info p  { font-size: .68rem; color: rgba(0,0,0,.55); }
+
+.dsc-featured-heart { position: absolute; top: .85rem; right: .85rem; }
+
+/* Recipe list */
+.dsc-recipe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dsc-recipe-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: white;
+    border-radius: 14px;
+    padding: .55rem .75rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,.04);
+}
+
+.dsc-recipe-emoji {
+    font-size: 1.3rem;
+    width: 36px; height: 36px;
+    background: #F5FAF2;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dsc-recipe-info { flex: 1; display: flex; flex-direction: column; gap: 1px; }
+.dsc-recipe-name { font-size: .78rem; font-weight: 600; color: #222; }
+.dsc-recipe-meta { font-size: .65rem; color: #8B8B8B; }
+
+/* Bottom nav */
+.dsc-bottom-nav {
+    position: absolute;
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .55rem .8rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,.30);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255,255,255,.35);
+    box-shadow: 0 10px 30px rgba(0,0,0,.10);
+}
+
+.dsc-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: #8b8b8b;
+    font-size: .68rem;
+    font-weight: 600;
+    transition: .35s;
+}
+
+.dsc-nav-item svg { width: 18px; height: 18px; }
+
+.dsc-active {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #53983d;
+    color: white;
+}
+
+.dsc-active span { font-size: .62rem; }
+
+@keyframes dscPhoneFloat {
+    0%   { transform: rotate(-4deg) translateY(0); }
+    50%  { transform: rotate(-4deg) translateY(-12px); }
+    100% { transform: rotate(-4deg) translateY(0); }
+}
