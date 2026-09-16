@@ -5,10 +5,10 @@ import Hero from "./components/Hero/Hero";
 
 // Lazy load everything else
 const Features = lazy(() => import("./components/Features/Features"));
-const HowItWorks = lazy(() => import("./components/HowItWorks/HowItworks"));
+const HowItWorks = lazy(() => import("./components/HowItWorks/HowItWorks"));
 const Testimonials = lazy(() => import("./components/Testimonials/Testimonials"));
 const Contact = lazy(() => import("./components/Contact/Contact"));
-const Footer = lazy(() => import("./components/Footer/Footer"));
+// const Footer = lazy(() => import("./components/Footer/Footer"));
 
 // 🔥 CRITICAL: Lazy load RecipeBackground (contains Three.js)
 const RecipeBackground = lazy(() => import("./components/RecipeBackground/RecipeBackground"));
@@ -88,10 +88,7 @@ function App() {
           </Suspense>
         </main>
 
-        {/* Footer sits outside <main> — it's its own landmark, not part of the main content region */}
-        <Suspense fallback={null}>
-          <Footer />
-        </Suspense>
+        {/* Footer is disabled until its component implementation is added. */}
       </div>
     </>
   );
