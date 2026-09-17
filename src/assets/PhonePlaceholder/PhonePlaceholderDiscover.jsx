@@ -41,7 +41,7 @@ function PhonePlaceholderDiscover() {
                     <div className="dsc-top">
                         <div>
                             <p className="dsc-label">Explore</p>
-                            <h4 className="dsc-title">Global Recipes</h4>
+                            <p className="dsc-title">Global Recipes</p>
                         </div>
                         <div className="dsc-search-icon">
                             <Search size={16} color="#4F7942" />
@@ -62,7 +62,7 @@ function PhonePlaceholderDiscover() {
                         </div>
                         <div className="dsc-featured-info">
                             <span className="dsc-featured-badge">Featured</span>
-                            <h5>Moroccan Tagine</h5>
+                            <p className="dsc-featured-name">Moroccan Tagine</p>
                             <p>North African · 520 kcal</p>
                         </div>
                         <Heart size={16} fill="#FF6347" color="#FF6347" className="dsc-featured-heart" />

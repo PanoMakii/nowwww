@@ -37,7 +37,7 @@
 .wbl-phone-content { padding: 1rem 1rem 7.8rem; display: flex; flex-direction: column; gap: 10px; }
 .wbl-top { display: flex; justify-content: space-between; align-items: flex-start; }
 .wbl-label { font-size: .7rem; color: #8B8B8B; font-weight: 500; }
-.wbl-title { font-size: 1.2rem; font-weight: 700; color: #222; }
+.wbl-title { font-size: 1.2rem; font-weight: 700; color: #222; margin: 0; }
 
 /* Stats */
 .wbl-stats-row {

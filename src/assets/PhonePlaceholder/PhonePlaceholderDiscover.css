@@ -161,7 +161,8 @@
     color: #222;
 }
 
-.dsc-featured-info h5 { font-size: .9rem; font-weight: 700; color: #222; }
+.dsc-featured-info h5,
+.dsc-featured-name { font-size: .9rem; font-weight: 700; color: #222; }
 .dsc-featured-info p  { font-size: .68rem; color: rgba(0,0,0,.55); }
 
 .dsc-featured-heart { position: absolute; top: .85rem; right: .85rem; }

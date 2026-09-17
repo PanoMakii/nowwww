@@ -72,9 +72,9 @@ function TestimonialCard({
 
                     <div>
 
-                        <h4>
+                        <p className="t-user-name">
                             {name}
-                        </h4>
+                        </p>
 
                         <span>
                             {role}

@@ -46,7 +46,7 @@ function PhonePlaceholderWearable() {
                     <div className="wbl-top">
                         <div>
                             <p className="wbl-label">Integrations</p>
-                            <h4 className="wbl-title">Wearable Sync</h4>
+                            <p className="wbl-title">Wearable Sync</p>
                         </div>
                         <Watch size={20} color="#4F7942" />
                     </div>

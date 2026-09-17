@@ -75,7 +75,7 @@
 }
 
 .ins-label { font-size: .7rem; color: #8B8B8B; font-weight: 500; }
-.ins-title { font-size: 1.2rem; font-weight: 700; color: #222; }
+.ins-title { font-size: 1.2rem; font-weight: 700; color: #222; margin: 0; }
 
 .ins-trend-badge {
     display: flex; align-items: center; gap: 4px;

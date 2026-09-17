@@ -116,7 +116,7 @@ function Footer() {
                                         aria-label="Email address"
                                         required
                                     />
-                                    <button type="submit">
+                                    <button type="submit" aria-label="Subscribe to newsletter">
                                         <ArrowRight size={18} />
                                     </button>
                                 </div>

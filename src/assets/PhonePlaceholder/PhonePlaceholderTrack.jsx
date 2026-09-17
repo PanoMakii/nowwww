@@ -31,11 +31,11 @@ function PhonePlaceholder() {
                         <div className="phone-content">
                             <div className="welcome">
                                 <div className="greeting">
-                                    <h4>Good Morning</h4>
+                                    <p className="phone-heading">Good Morning</p>
                                     <SunMedium size={18} />
                                 </div>
 
-                                <h3 className="welcome-name">Malik</h3>
+                                <p className="welcome-name">Malik</p>
                             </div>
 
                             <div className="goal-card">
@@ -49,10 +49,10 @@ function PhonePlaceholder() {
                                     <span className="goal-percent">84%</span>
                                 </div>
 
-                                <h2>
+                                <p className="goal-value">
                                     1845
                                     <span>/2200 kcal</span>
-                                </h2>
+                                </p>
 
                                 <div className="progress">
                                     <div className="progress-fill"></div>
@@ -70,7 +70,7 @@ function PhonePlaceholder() {
                                     </div>
 
                                     <div>
-                                        <h5>Avocado Bowl</h5>
+                                        <p className="meal-name">Avocado Bowl</p>
 
                                         <p className="meal-calories">
                                             <span>High Protein • </span> <i>520 kcal</i>

@@ -37,7 +37,7 @@ function PhonePlaceholderPlan() {
                     <div className="pln-top">
                         <div>
                             <p className="pln-label">This Week</p>
-                            <h4 className="pln-title">Meal Plan</h4>
+                            <p className="pln-title">Meal Plan</p>
                         </div>
                         <div className="pln-ai-badge">
                             <Sparkles size={12} />

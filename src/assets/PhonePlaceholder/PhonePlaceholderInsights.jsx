@@ -38,7 +38,7 @@ function PhonePlaceholderInsights() {
                     <div className="ins-top">
                         <div>
                             <p className="ins-label">This Week</p>
-                            <h4 className="ins-title">Nutrition Insights</h4>
+                            <p className="ins-title">Nutrition Insights</p>
                         </div>
                         <div className="ins-trend-badge">
                             <TrendingUp size={12} />

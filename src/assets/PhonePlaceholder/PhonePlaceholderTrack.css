@@ -203,7 +203,8 @@ gap:12px;
 
 }
 
-.phone-content h4 {
+.phone-content h4,
+.phone-heading {
 
     font-size: 1.4rem;
 
@@ -412,7 +413,8 @@ font-size:1.55rem;
 
 }
 
-.meal-card h5 {
+.meal-card h5,
+.meal-name {
 
     margin-bottom: 4px;
  font-size:0.88rem;

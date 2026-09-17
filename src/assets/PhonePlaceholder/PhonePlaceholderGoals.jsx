@@ -43,7 +43,7 @@ function PhonePlaceholderGoals() {
                     <div className="gls-top">
                         <div>
                             <p className="gls-label">Tailored For You</p>
-                            <h4 className="gls-title">My Goals</h4>
+                            <p className="gls-title">My Goals</p>
                         </div>
                         <Target size={20} color="#4F7942" />
                     </div>
