@@ -10,6 +10,7 @@
 
 html{
     scroll-behavior:smooth;
+    font-size:80%;
 }
 
 body{
@@ -19,8 +20,8 @@ body{
        window with nothing painting the canvas yet. This matches the
        dark fallback color RecipeBackground.css already used, so that
        gap reads as intentional instead of a flash of white. */
-    background:#1A1410;
-
+    background: #F5A038;
+    /* zoom: .8; */
 }
 
 a{
@@ -46,7 +47,7 @@ input{
 
 }
 .container{
-    width:min(90%,1200px);
+    width:min(90%,1024px);
     margin-inline:auto;
 }
 

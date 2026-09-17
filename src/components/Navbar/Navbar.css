@@ -14,7 +14,7 @@
 
     position: relative;
 
-    max-width: 1200px;
+    max-width: 1024px;
     margin: 0 auto;
 
     padding: .9rem 2rem;
@@ -167,15 +167,17 @@
 
     border-radius:28px;
 
-    background:rgba(255,253,248,.92);
+    background:rgba(255,255,255,.18);
 
     backdrop-filter:blur(24px);
 
     -webkit-backdrop-filter:blur(24px);
 
-    border:1px solid rgba(255,255,255,.5);
+    border:1px solid rgba(255,255,255,.35);
 
-    box-shadow:0 25px 60px rgba(0,0,0,.18);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.45),
+        0 25px 60px rgba(0,0,0,.18);
 
     display:flex;
 
