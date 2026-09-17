@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense } from 'react';
 // Keep critical components immediate
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
@@ -13,27 +13,6 @@ const Footer = lazy(() => import("./components/Footer/Footer"));
 // 🔥 CRITICAL: Lazy load RecipeBackground (contains Three.js)
 const RecipeBackground = lazy(() => import("./components/RecipeBackground/RecipeBackground"));
 
-
-function DeferredBackground() {
-    const [ready, setReady] = useState(false);
-
-    useEffect(() => {
-        if ('requestIdleCallback' in window) {
-            const id = window.requestIdleCallback(() => setReady(true), { timeout: 2000 });
-            return () => window.cancelIdleCallback(id);
-        }
-        const id = setTimeout(() => setReady(true), 300);
-        return () => clearTimeout(id);
-    }, []);
-
-    if (!ready) return null;
-
-    return (
-        <Suspense fallback={null}>
-            <RecipeBackground />
-        </Suspense>
-    );
-}
 
 function App() {
   return (
@@ -70,8 +49,9 @@ function App() {
         </defs>
       </svg>
 
-      {/* Now idle-deferred instead of just lazy-loaded */}
-      <DeferredBackground />
+      <Suspense fallback={null}>
+        <RecipeBackground />
+      </Suspense>
 
       <div className="app-content">
         <Navbar />
@@ -79,11 +59,16 @@ function App() {
         <main>
           <Hero />
 
-          {/* Lazy-loaded sections */}
-          <Suspense fallback={<div className="loading-skeleton">Loading...</div>}>
+          <Suspense fallback={null}>
             <Features />
+          </Suspense>
+          <Suspense fallback={null}>
             <HowItWorks />
+          </Suspense>
+          <Suspense fallback={null}>
             <Testimonials />
+          </Suspense>
+          <Suspense fallback={null}>
             <Contact />
           </Suspense>
         </main>

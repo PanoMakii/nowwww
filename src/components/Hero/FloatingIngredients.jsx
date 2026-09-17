@@ -1,7 +1,7 @@
 import "./FloatingIngredients.css";
 
-import avocado from "../../assets/images/ingredients/avocado.webp";
-import broccoli from "../../assets/images/ingredients/broccoli.webp";
+import avocado from "../../assets/images/ingredients/avocado-optimized.webp";
+import broccoli from "../../assets/images/ingredients/broccoli-optimized.webp";
 import strawberry from "../../assets/images/ingredients/strawberry.webp";
 import lemon from "../../assets/images/ingredients/lemon.webp";
 
