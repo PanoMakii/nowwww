@@ -5,6 +5,7 @@
 .hiw {
     padding: 6rem 0;
     overflow: hidden;
+    background: transparent;
 }
 
 /* ===========================
@@ -46,6 +47,15 @@
     flex-direction: column;
     gap: 1rem;
     max-width: 480px;
+    padding: 2rem 3rem;
+        background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+
+
 }
 
 .hiw-step-number {
@@ -92,8 +102,8 @@
 
 .hiw-cta-btn {
     align-self: flex-start;
-    background: #4F7942;
-    color: white;
+    background: #4f7942d1;
+    color:#E8F5E9;
     border: none;
     padding: .85rem 1.8rem;
     border-radius: 999px;

@@ -10,13 +10,16 @@ import {
     Watch,
     CheckCircle2,
     Circle,
+    HeartPulse,
+    Footprints,
+    Smartphone,
 } from "lucide-react";
 
 const devices = [
-    { name: "Apple Watch",   sub: "Series 9 · Connected", icon: "⌚", connected: true  },
-    { name: "Apple Health",  sub: "Syncing steps & sleep", icon: "❤️", connected: true  },
-    { name: "Google Fit",    sub: "Tap to connect",        icon: "🏃", connected: false },
-    { name: "Fitbit",        sub: "Tap to connect",        icon: "📟", connected: false },
+    { name: "Apple Watch",   sub: "Series 9 · Connected", icon: Watch, color: "#3B82F6", connected: true  },
+    { name: "Apple Health",  sub: "Syncing steps & sleep", icon: HeartPulse, color: "#E25555", connected: true  },
+    { name: "Google Fit",    sub: "Tap to connect",        icon: Footprints, color: "#34A853", connected: false },
+    { name: "Fitbit",        sub: "Tap to connect",        icon: Smartphone, color: "#00A6A6", connected: false },
 ];
 
 const syncedStats = [
@@ -62,7 +65,9 @@ function PhonePlaceholderWearable() {
                     <div className="wbl-device-list">
                         {devices.map((d) => (
                             <div key={d.name} className="wbl-device-row">
-                                <span className="wbl-device-icon">{d.icon}</span>
+                                <span className="wbl-device-icon">
+                                    <d.icon size={20} strokeWidth={1.8} color={d.color} />
+                                </span>
                                 <div className="wbl-device-info">
                                     <span className="wbl-device-name">{d.name}</span>
                                     <span className="wbl-device-sub">{d.sub}</span>

@@ -8,7 +8,7 @@
 .gls-phone {
     position: relative; z-index: 2; margin: auto;
     width: 300px; height: 620px; border-radius: 46px;
-    border: 8px solid #1B1B1B; background: #fafafa; overflow: hidden;
+    border: 8px solid #1B1B1B; background: transparent; overflow: hidden;
     transform: rotate(-4deg) scale(.90);
     transition: transform .6s ease, box-shadow .6s ease;
     box-shadow: 0 45px 100px rgba(0,0,0,.18), 0 12px 40px rgba(79,121,66,.08);
@@ -69,6 +69,16 @@
 
 /* Milestones */
 .gls-milestones { display: flex; flex-direction: column; gap: 7px; background: white; border-radius: 16px; padding: .75rem; box-shadow: 0 6px 18px rgba(0,0,0,.06); }
+
+.gls-progress-card,
+.gls-milestones {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+}
 .gls-milestone-row { display: flex; align-items: center; gap: 8px; }
 .gls-milestone-text { font-size: .75rem; color: #444; }
 .gls-done { text-decoration: line-through; color: #aaa; }

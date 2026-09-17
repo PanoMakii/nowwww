@@ -34,7 +34,7 @@
 
     border: 8px solid #1B1B1B;
 
-    background: #fafafa;
+background: transparent;
 
     border: 8px solid #1B1B1B;
 
@@ -267,11 +267,12 @@ gap:12px;
 
 .goal-card {
 
-    background: linear-gradient(135deg,
-            #F4C430,
-            #FFD95A);
-
-    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
 
     padding: .9rem;
 
@@ -377,11 +378,13 @@ font-size:1.55rem;
 
     padding: .75rem;
 
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
     border-radius: 16px;
-    background: white;
-    box-shadow:
 
-        0 8px 20px rgba(0, 0, 0, .06);
 
     margin-bottom: 1rem;
 
@@ -455,7 +458,10 @@ font-size:1.55rem;
 
     border-radius:14px;
 
-    background:#F5FAF2;
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.2);
 
     display:flex;
 
@@ -492,7 +498,7 @@ font-size:1.55rem;
     background: #4F7942;
     white-space: nowrap;
 
-    color: white;
+    color: #fafafa;
 
     padding: .4rem .45rem;
 

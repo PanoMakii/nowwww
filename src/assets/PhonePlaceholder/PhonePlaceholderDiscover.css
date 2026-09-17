@@ -18,7 +18,7 @@
     height: 620px;
     border-radius: 46px;
     border: 8px solid #1B1B1B;
-    background: #fafafa;
+    background: transparent;
     overflow: hidden;
     transform: rotate(-4deg) scale(.90);
     transition: transform .6s ease, box-shadow .6s ease;
@@ -95,7 +95,10 @@
 .dsc-search-icon {
     width: 34px; height: 34px;
     border-radius: 10px;
-    background: #F5FAF2;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -183,7 +186,10 @@
 .dsc-recipe-emoji {
     font-size: 1.3rem;
     width: 36px; height: 36px;
-    background: #F5FAF2;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -193,6 +199,16 @@
 .dsc-recipe-info { flex: 1; display: flex; flex-direction: column; gap: 1px; }
 .dsc-recipe-name { font-size: .78rem; font-weight: 600; color: #222; }
 .dsc-recipe-meta { font-size: .65rem; color: #8B8B8B; }
+
+.dsc-featured,
+.dsc-recipe-row {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+}
 
 /* Bottom nav */
 .dsc-bottom-nav {

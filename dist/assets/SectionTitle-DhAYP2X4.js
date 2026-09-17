@@ -1,2 +1,0 @@
-import{r as e}from"./vendor-framer-ZSnkss_G.js";var t=e();function n({badge:e,title:n,subtitle:r,align:i=`center`}){return(0,t.jsxs)(`div`,{className:`section-title ${i}`,children:[e&&(0,t.jsx)(`span`,{className:`section-badge`,children:e}),n&&(0,t.jsx)(`h2`,{children:n}),r&&(0,t.jsx)(`p`,{children:r})]})}export{n as t};
-//# sourceMappingURL=SectionTitle-DhAYP2X4.js.map

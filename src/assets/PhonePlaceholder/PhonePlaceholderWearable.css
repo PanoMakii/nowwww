@@ -8,7 +8,7 @@
 .wbl-phone {
     position: relative; z-index: 2; margin: auto;
     width: 300px; height: 620px; border-radius: 46px;
-    border: 8px solid #1B1B1B; background: #fafafa; overflow: hidden;
+    border: 8px solid #1B1B1B; background: transparent; overflow: hidden;
     transform: rotate(4deg) scale(.90);
     transition: transform .6s ease, box-shadow .6s ease;
     box-shadow: 0 45px 100px rgba(0,0,0,.18), 0 12px 40px rgba(79,121,66,.08);
@@ -57,7 +57,17 @@
     padding: .65rem .75rem;
     box-shadow: 0 4px 12px rgba(0,0,0,.04);
 }
-.wbl-device-icon { font-size: 1.3rem; width: 36px; height: 36px; background: #F5FAF2; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+
+.wbl-stats-row,
+.wbl-device-row {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+}
+.wbl-device-icon { font-size: 1.3rem; width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
 .wbl-device-info { flex: 1; display: flex; flex-direction: column; gap: 1px; }
 .wbl-device-name { font-size: .78rem; font-weight: 600; color: #222; }
 .wbl-device-sub { font-size: .65rem; color: #8B8B8B; }

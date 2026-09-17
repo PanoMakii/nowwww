@@ -8,7 +8,7 @@ const Features = lazy(() => import("./components/Features/Features"));
 const HowItWorks = lazy(() => import("./components/HowItWorks/HowItWorks"));
 const Testimonials = lazy(() => import("./components/Testimonials/Testimonials"));
 const Contact = lazy(() => import("./components/Contact/Contact"));
-// const Footer = lazy(() => import("./components/Footer/Footer"));
+const Footer = lazy(() => import("./components/Footer/Footer"));
 
 // 🔥 CRITICAL: Lazy load RecipeBackground (contains Three.js)
 const RecipeBackground = lazy(() => import("./components/RecipeBackground/RecipeBackground"));
@@ -88,7 +88,9 @@ function App() {
           </Suspense>
         </main>
 
-        {/* Footer is disabled until its component implementation is added. */}
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
       </div>
     </>
   );

@@ -5,29 +5,61 @@ import TestimonialCard from "./TestimonialCard";
 import testimonials from "./testimonialsData";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-// import CountUp from "react-countup";
 
 const stats = [
     {
-        value: "150K+",
+        value: 150,
+        suffix: "K+",
         label: "Healthy Users",
         icon: Users,
     },
     {
-        value: "4.9",
+        value: 4.9,
+        decimals: 1,
         label: "Average Rating",
         icon: Star,
     },
     {
-        value: "92%",
+        value: 92,
+        suffix: "%",
         label: "Goal Success",
         icon: Trophy,
     },
 ];
 
+function AnimatedStatValue({ value, suffix = "", decimals = 0, isVisible }) {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        if (!isVisible) return;
+
+        const duration = 1200;
+        const startTime = performance.now();
+        let animationFrame;
+
+        const animate = (currentTime) => {
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+            setCount(value * easedProgress);
+
+            if (progress < 1) {
+                animationFrame = requestAnimationFrame(animate);
+            }
+        };
+
+        animationFrame = requestAnimationFrame(animate);
+
+        return () => cancelAnimationFrame(animationFrame);
+    }, [isVisible, value]);
+
+    return `${count.toFixed(decimals)}${suffix}`;
+}
+
 function Testimonials() {
     const [testimonialTitle, setTestimonialTitle] = useState("");
     const [isTitleVisible, setIsTitleVisible] = useState(false);
+    const [areStatsVisible, setAreStatsVisible] = useState(false);
 
     useEffect(() => {
         if (!isTitleVisible) return;
@@ -75,7 +107,11 @@ function Testimonials() {
                     }
                     subtitle="Real stories from people building healthier habits with Recip52."
                 />
-                <div className="t-stats">
+                <motion.div
+                    className="t-stats"
+                    onViewportEnter={() => setAreStatsVisible(true)}
+                    viewport={{ once: true, amount: 0.4 }}
+                >
                     {stats.map((stat) => {
                         const Icon = stat.icon;
 
@@ -85,13 +121,20 @@ function Testimonials() {
                                     <Icon size={20} />
                                 </div>
 
-                                <h3>{stat.value}</h3>
+                                <h3>
+                                    <AnimatedStatValue
+                                        value={stat.value}
+                                        suffix={stat.suffix}
+                                        decimals={stat.decimals}
+                                        isVisible={areStatsVisible}
+                                    />
+                                </h3>
 
                                 <p>{stat.label}</p>
                             </div>
                         );
                     })}
-                </div>
+                </motion.div>
 
                 <div className="t-grid">
                     {testimonials.map((item) => (

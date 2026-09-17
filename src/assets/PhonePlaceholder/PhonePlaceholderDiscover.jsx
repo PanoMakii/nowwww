@@ -9,12 +9,16 @@ import {
     Battery,
     Search,
     Heart,
+    CookingPot,
+    Fish,
+    Egg,
+    Salad,
 } from "lucide-react";
 
 const recipes = [
-    { name: "Jollof Rice Bowl", cuisine: "West African", kcal: 480, emoji: "🍚", liked: true },
-    { name: "Miso Salmon", cuisine: "Japanese", kcal: 410, emoji: "🐟", liked: false },
-    { name: "Shakshuka", cuisine: "Middle Eastern", kcal: 320, emoji: "🍳", liked: true },
+    { name: "Jollof Rice Bowl", cuisine: "West African", kcal: 480, icon: Salad, color: "#D96B27", liked: true },
+    { name: "Miso Salmon", cuisine: "Japanese", kcal: 410, icon: Fish, color: "#D96A78", liked: false },
+    { name: "Shakshuka", cuisine: "Middle Eastern", kcal: 320, icon: Egg, color: "#C9573F", liked: true },
 ];
 
 const tags = ["All", "African", "Asian", "Mediterranean"];
@@ -53,7 +57,9 @@ function PhonePlaceholderDiscover() {
 
                     {/* Featured card */}
                     <div className="dsc-featured">
-                        <div className="dsc-featured-emoji">🥘</div>
+                        <div className="dsc-featured-emoji">
+                            <CookingPot size={26} strokeWidth={1.8} color="#B86B3D" />
+                        </div>
                         <div className="dsc-featured-info">
                             <span className="dsc-featured-badge">Featured</span>
                             <h5>Moroccan Tagine</h5>
@@ -66,7 +72,9 @@ function PhonePlaceholderDiscover() {
                     <div className="dsc-recipe-list">
                         {recipes.map((r) => (
                             <div className="dsc-recipe-row" key={r.name}>
-                                <span className="dsc-recipe-emoji">{r.emoji}</span>
+                                <span className="dsc-recipe-emoji">
+                                    <r.icon size={20} strokeWidth={1.8} color={r.color} />
+                                </span>
                                 <div className="dsc-recipe-info">
                                     <span className="dsc-recipe-name">{r.name}</span>
                                     <span className="dsc-recipe-meta">{r.cuisine} · {r.kcal} kcal</span>
