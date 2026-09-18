@@ -1,0 +1,463 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Recip52 Nutrition & Smart Meal Engine API",
+    "version": "1.0.0",
+    "description": "Comprehensive RESTful API for Recip52 SaaS platform. Powers calorie & macronutrient tracking, multimodal AI meal photo recognition, 7-day personalized weekly meal planning, biometric wearable sync, and social community challenges.",
+    "contact": {
+      "name": "Recip52 Engineering Team",
+      "url": "https://recip52.com/developers",
+      "email": "api@recip52.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "servers": [
+    {
+      "url": "/api",
+      "description": "Current Environment API Base"
+    },
+    {
+      "url": "http://localhost:5000/api",
+      "description": "Local Development Server"
+    }
+  ],
+  "tags": [
+    { "name": "Health", "description": "System health, database ping & telemetry checks" },
+    { "name": "Auth", "description": "User authentication, registration, JWT sessions & onboarding" },
+    { "name": "Users", "description": "User profiles and nutritional target preferences" },
+    { "name": "Foods", "description": "Global nutritional food database and search" },
+    { "name": "Meals", "description": "Daily food & meal logging with real-time macro summing" },
+    { "name": "Recipes", "description": "Curated culinary catalog, community recipes, bookmarks & reviews" },
+    { "name": "AI & Smart Features", "description": "Computer vision plate scanning & 7-day meal plan generator" },
+    { "name": "Wearables", "description": "Biometric device sync (Apple Health, Garmin, Whoop, Fitbit)" },
+    { "name": "Social & Community", "description": "Creator profiles, follow graph, 30-day challenges & live leaderboards" },
+    { "name": "Analytics", "description": "Aggregated weekly trends and AI nutritionist coaching insights" }
+  ],
+  "paths": {
+    "/health": {
+      "get": {
+        "tags": ["Health"],
+        "summary": "Health Check & Database Telemetry",
+        "description": "Returns uptime, database latency, and service readiness status.",
+        "responses": {
+          "200": {
+            "description": "Service is healthy and ready to accept traffic",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "ok" },
+                    "timestamp": { "type": "string", "example": "2026-09-18T15:00:00.000Z" },
+                    "uptime": { "type": "number", "example": 421.5 },
+                    "database": {
+                      "type": "object",
+                      "properties": {
+                        "status": { "type": "string", "example": "connected" },
+                        "latencyMs": { "type": "number", "example": 4 }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register a new user account",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email", "password", "firstName"],
+                "properties": {
+                  "email": { "type": "string", "format": "email", "example": "chef@recip52.com" },
+                  "password": { "type": "string", "minLength": 8, "example": "SecretPass123!" },
+                  "firstName": { "type": "string", "example": "Alex" },
+                  "lastName": { "type": "string", "example": "Johnson" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "User created successfully with auth token" },
+          "400": { "description": "Validation error or invalid inputs" },
+          "409": { "description": "Email is already registered" }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Sign in with email and password",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["email", "password"],
+                "properties": {
+                  "email": { "type": "string", "format": "email", "example": "alex@recip52.com" },
+                  "password": { "type": "string", "example": "Password123" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Authentication successful, returns JWT token and user profile" },
+          "401": { "description": "Invalid credentials" }
+        }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "tags": ["Auth"],
+        "summary": "Get authenticated user profile",
+        "security": [{ "BearerAuth": [] }],
+        "responses": {
+          "200": { "description": "Active user identity" },
+          "401": { "description": "Unauthorized - Missing or expired token" }
+        }
+      }
+    },
+    "/foods": {
+      "get": {
+        "tags": ["Foods"],
+        "summary": "Search the nutrient database",
+        "parameters": [
+          { "name": "search", "in": "query", "schema": { "type": "string" }, "description": "Food name filter" },
+          { "name": "category", "in": "query", "schema": { "type": "string" }, "description": "Category (Poultry, Fish, Grains, Vegetables, etc.)" },
+          { "name": "limit", "in": "query", "schema": { "type": "integer", "default": 20 } }
+        ],
+        "responses": {
+          "200": { "description": "List of food items with per-100g calorie and macro measurements" }
+        }
+      }
+    },
+    "/meals": {
+      "get": {
+        "tags": ["Meals"],
+        "summary": "List logged meals by date",
+        "parameters": [
+          { "name": "date", "in": "query", "schema": { "type": "string", "format": "date" }, "description": "Filter by date (YYYY-MM-DD)" }
+        ],
+        "responses": {
+          "200": { "description": "Logged meals with nutrition summaries" }
+        }
+      },
+      "post": {
+        "tags": ["Meals"],
+        "summary": "Log a meal item or dish",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["mealType", "calories"],
+                "properties": {
+                  "mealType": { "type": "string", "enum": ["breakfast", "lunch", "dinner", "snack"], "example": "lunch" },
+                  "title": { "type": "string", "example": "Grilled Salmon Bowl" },
+                  "calories": { "type": "number", "example": 520 },
+                  "protein": { "type": "number", "example": 44 },
+                  "carbs": { "type": "number", "example": 34 },
+                  "fat": { "type": "number", "example": 22 },
+                  "items": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Meal logged successfully" }
+        }
+      }
+    },
+    "/meals/{id}": {
+      "delete": {
+        "tags": ["Meals"],
+        "summary": "Delete a logged meal item",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Meal deleted" },
+          "404": { "description": "Meal not found" }
+        }
+      }
+    },
+    "/recipes": {
+      "get": {
+        "tags": ["Recipes"],
+        "summary": "List filterable recipes feed",
+        "parameters": [
+          { "name": "search", "in": "query", "schema": { "type": "string" } },
+          { "name": "category", "in": "query", "schema": { "type": "string" } },
+          { "name": "maxCalories", "in": "query", "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": { "description": "Curated & community recipes" }
+        }
+      }
+    },
+    "/recipes/publish": {
+      "post": {
+        "tags": ["Recipes"],
+        "summary": "Publish a community recipe",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["name", "calories"],
+                "properties": {
+                  "name": { "type": "string", "example": "Crispy Teriyaki Salmon Bowl" },
+                  "category": { "type": "string", "example": "High-Protein" },
+                  "prepTime": { "type": "string", "example": "15 min" },
+                  "cookTime": { "type": "string", "example": "20 min" },
+                  "servings": { "type": "integer", "example": 2 },
+                  "calories": { "type": "number", "example": 520 },
+                  "protein": { "type": "number", "example": 42 },
+                  "carbs": { "type": "number", "example": 38 },
+                  "fat": { "type": "number", "example": 18 },
+                  "image": { "type": "string", "format": "uri" },
+                  "ingredients": { "type": "array", "items": { "type": "object" } },
+                  "instructions": { "type": "array", "items": { "type": "string" } }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Recipe published to community feed" },
+          "400": { "description": "Validation error" }
+        }
+      }
+    },
+    "/recipes/{id}/reviews": {
+      "get": {
+        "tags": ["Recipes"],
+        "summary": "Get reviews for a recipe",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "List of reviews with star ratings and comments" }
+        }
+      },
+      "post": {
+        "tags": ["Recipes"],
+        "summary": "Submit a rating and review for a recipe",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["rating", "comment"],
+                "properties": {
+                  "rating": { "type": "integer", "minimum": 1, "maximum": 5, "example": 5 },
+                  "comment": { "type": "string", "example": "Phenomenal crisp skin and perfect macro balance." }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Review added and average rating updated" }
+        }
+      }
+    },
+    "/ai/analyze-photo": {
+      "post": {
+        "tags": ["AI & Smart Features"],
+        "summary": "Segment meal photo and estimate macros",
+        "description": "Processes a plate photograph using OpenAI Vision or culinary segmentation heuristic fallback, estimating individual food items, gram weights, and total macronutrients.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": { "type": "string", "description": "Base64 encoded image string" },
+                  "sampleId": { "type": "string", "example": "salmon_bowl" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Segmented items, gram weights, confidence ratings, and macro totals" }
+        }
+      }
+    },
+    "/ai/generate-plan": {
+      "post": {
+        "tags": ["AI & Smart Features"],
+        "summary": "Generate a 7-day personalized meal plan",
+        "description": "Calculates 4 daily meals (Breakfast, Lunch, Snack, Dinner) balanced to target calories and protein, plus an aisle-categorized smart grocery checklist.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "targetCalories": { "type": "integer", "example": 2200 },
+                  "targetProtein": { "type": "integer", "example": 160 },
+                  "goal": { "type": "string", "enum": ["Fat Loss", "Muscle Gain", "Maintenance", "Clean Energy"], "example": "Muscle Gain" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "7-day meal schedule and categorized grocery list" }
+        }
+      }
+    },
+    "/wearables": {
+      "get": {
+        "tags": ["Wearables"],
+        "summary": "List connected wearable devices and live telemetry",
+        "responses": {
+          "200": { "description": "Registry of supported devices and current biometrics (steps, active burn, heart rate, sleep)" }
+        }
+      }
+    },
+    "/wearables/connect": {
+      "post": {
+        "tags": ["Wearables"],
+        "summary": "Connect a wearable provider via OAuth token",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["deviceType"],
+                "properties": {
+                  "deviceType": { "type": "string", "enum": ["apple_health", "fitbit", "garmin", "google_fit", "whoop"] }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Device successfully connected" }
+        }
+      }
+    },
+    "/wearables/sync": {
+      "post": {
+        "tags": ["Wearables"],
+        "summary": "Trigger biometric telemetry sync & calorie bonus calibration",
+        "responses": {
+          "200": { "description": "Telemetry synchronized with dynamic nutritional bonus calculation" }
+        }
+      }
+    },
+    "/social/feed": {
+      "get": {
+        "tags": ["Social & Community"],
+        "summary": "Community activity stream",
+        "responses": {
+          "200": { "description": "List of milestones, recipe drops, and cheers" }
+        }
+      }
+    },
+    "/social/feed/{id}/cheer": {
+      "post": {
+        "tags": ["Social & Community"],
+        "summary": "Cheer / Like an activity milestone",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Cheer toggled with updated likes count" }
+        }
+      }
+    },
+    "/social/challenges": {
+      "get": {
+        "tags": ["Social & Community"],
+        "summary": "List active 30-day macro challenges",
+        "responses": {
+          "200": { "description": "Active challenges with participant counts and user enrollment progress" }
+        }
+      }
+    },
+    "/social/challenges/{id}/join": {
+      "post": {
+        "tags": ["Social & Community"],
+        "summary": "Join a 30-day nutrition challenge",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Enrolled in challenge" }
+        }
+      }
+    },
+    "/social/profile/{id}": {
+      "get": {
+        "tags": ["Social & Community"],
+        "summary": "View public creator or user profile",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Public profile stats, badges, and authored community recipes" }
+        }
+      }
+    },
+    "/social/follow/{id}": {
+      "post": {
+        "tags": ["Social & Community"],
+        "summary": "Follow or unfollow a community creator",
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Follow status updated" }
+        }
+      }
+    },
+    "/analytics/insights": {
+      "get": {
+        "tags": ["Analytics"],
+        "summary": "Get AI nutritionist coaching insights",
+        "responses": {
+          "200": { "description": "Streak badges, macro ratio balance, and personalized recommendations" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Enter the JWT Bearer token obtained from /api/auth/login"
+      }
+    }
+  }
+}

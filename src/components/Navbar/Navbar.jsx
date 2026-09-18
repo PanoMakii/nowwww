@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { useAuth } from "../../context/AuthContext.jsx";
 import "./Navbar.css";
 import logo from "../../assets/icons/recip52-icon-horizontal-Green.svg";
 
@@ -13,6 +15,7 @@ const navLinks = [
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const { isAuthenticated } = useAuth();
 
     // lock background scroll while the mobile menu is open
     useEffect(() => {
@@ -51,9 +54,22 @@ function Navbar() {
                 </ul>
 
                 {/* Desktop CTA */}
-                <a href="#download" className="download-btn">
-                    Download Now
-                </a>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
+                    {isAuthenticated ? (
+                        <Link to="/dashboard" className="download-btn">
+                            Open Dashboard
+                        </Link>
+                    ) : (
+                        <>
+                            <Link to="/auth/login" style={{ textDecoration: 'none', color: '#222', fontWeight: 600 }}>
+                                Sign In
+                            </Link>
+                            <Link to="/auth/signup" className="download-btn">
+                                Get Started
+                            </Link>
+                        </>
+                    )}
+                </div>
 
                 {/* Mobile menu toggle */}
                 <button
@@ -100,13 +116,32 @@ function Navbar() {
                                 ))}
                             </ul>
 
-                            <a
-                                href="#download"
-                                className="download-btn mobile-download-btn"
-                                onClick={closeMenu}
-                            >
-                                Download Now
-                            </a>
+                            {isAuthenticated ? (
+                                <Link
+                                    to="/dashboard"
+                                    className="download-btn mobile-download-btn"
+                                    onClick={closeMenu}
+                                >
+                                    Open Dashboard
+                                </Link>
+                            ) : (
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+                                    <Link
+                                        to="/auth/login"
+                                        style={{ textDecoration: 'none', color: '#222', fontWeight: 600, textAlign: 'center', padding: '10px' }}
+                                        onClick={closeMenu}
+                                    >
+                                        Sign In
+                                    </Link>
+                                    <Link
+                                        to="/auth/signup"
+                                        className="download-btn mobile-download-btn"
+                                        onClick={closeMenu}
+                                    >
+                                        Get Started
+                                    </Link>
+                                </div>
+                            )}
                         </motion.div>
                     </>
                 )}

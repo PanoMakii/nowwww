@@ -1,0 +1,269 @@
+/* ===================================================
+   Auth Pages Shared Styles (Login, Signup, Onboarding)
+   =================================================== */
+
+.auth-form-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.auth-form-subtitle {
+  font-size: 0.85rem;
+  color: #9E988E;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.auth-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #C5BFB5;
+}
+
+.auth-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.auth-input-icon {
+  position: absolute;
+  left: 14px;
+  color: #7E7870;
+  pointer-events: none;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.auth-input:focus {
+  border-color: #F4C430;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 16px rgba(244, 196, 48, 0.15);
+}
+
+.auth-password-toggle {
+  position: absolute;
+  right: 14px;
+  background: transparent;
+  border: none;
+  color: #7E7870;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-password-toggle:hover {
+  color: #F4C430;
+}
+
+.auth-form-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.82rem;
+}
+
+.auth-forgot-link {
+  color: #F4C430;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.auth-forgot-link:hover {
+  text-decoration: underline;
+}
+
+.auth-btn-submit {
+  background: linear-gradient(135deg, #F4C430 0%, #E5A812 100%);
+  color: #1A1817;
+  border: none;
+  padding: 13px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 16px rgba(244, 196, 48, 0.25);
+  transition: all 0.2s ease;
+  margin-top: 6px;
+}
+
+.auth-btn-submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(244, 196, 48, 0.4);
+}
+
+.auth-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0;
+  color: #6C665F;
+  font-size: 0.8rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.auth-btn-demo {
+  background: rgba(244, 196, 48, 0.08);
+  border: 1px dashed rgba(244, 196, 48, 0.4);
+  color: #F4C430;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.auth-btn-demo:hover {
+  background: rgba(244, 196, 48, 0.16);
+  border-style: solid;
+}
+
+.auth-switch-prompt {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #9E988E;
+}
+
+.auth-switch-link {
+  color: #F4C430;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.auth-switch-link:hover {
+  text-decoration: underline;
+}
+
+.auth-error-alert {
+  background: rgba(255, 99, 71, 0.15);
+  border: 1px solid rgba(255, 99, 71, 0.3);
+  color: #FF6347;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.auth-success-alert {
+  background: rgba(79, 121, 66, 0.2);
+  border: 1px solid rgba(79, 121, 66, 0.4);
+  color: #7BB661;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Onboarding Step Progress Indicator */
+.onboarding-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.onboarding-step-dot {
+  width: 28px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  transition: all 0.3s ease;
+}
+
+.onboarding-step-dot.active {
+  background: #F4C430;
+  box-shadow: 0 0 8px rgba(244, 196, 48, 0.4);
+}
+
+.onboarding-step-dot.completed {
+  background: #4F7942;
+}
+
+/* Dietary & Allergy Chips */
+.chips-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.filter-chip {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #C5BFB5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.filter-chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.filter-chip.selected {
+  background: rgba(244, 196, 48, 0.2);
+  border-color: #F4C430;
+  color: #F4C430;
+  font-weight: 600;
+}

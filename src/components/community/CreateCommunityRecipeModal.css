@@ -1,0 +1,293 @@
+/* Create Community Recipe Modal Styling */
+.comm-recipe-modal {
+  background: #1A1817;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  width: 92%;
+  max-width: 680px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7);
+  animation: commModalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes commModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.comm-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.comm-modal-icon-wrap {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(244, 196, 48, 0.1);
+  border: 1px solid rgba(244, 196, 48, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comm-modal-title {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.comm-modal-sub {
+  font-size: 0.82rem;
+  color: #8C867E;
+  margin: 2px 0 0 0;
+}
+
+.comm-modal-close {
+  background: rgba(255, 255, 255, 0.05);
+  border: none;
+  color: #C5BFB5;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.comm-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.comm-form-body {
+  padding: 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.comm-error-banner {
+  background: rgba(255, 99, 71, 0.15);
+  border: 1px solid rgba(255, 99, 71, 0.3);
+  color: #FF6347;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+}
+
+.comm-form-row {
+  display: flex;
+  gap: 14px;
+}
+
+.comm-form-row.four-col {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.comm-macro-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 12px 16px;
+  border-radius: 14px;
+}
+
+.comm-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.comm-form-group label,
+.section-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #C5BFB5;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.comm-form-group input,
+.comm-form-group select,
+.comm-form-group textarea,
+.comm-ingredient-row input,
+.comm-instruction-row input {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.comm-form-group input:focus,
+.comm-form-group select:focus,
+.comm-form-group textarea:focus,
+.comm-ingredient-row input:focus,
+.comm-instruction-row input:focus {
+  border-color: #F4C430;
+}
+
+.comm-image-presets-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 8px;
+}
+
+.comm-preset-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.comm-preset-btn img {
+  width: 100%;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.comm-preset-btn span {
+  font-size: 0.7rem;
+  color: #8C867E;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.comm-preset-btn:hover {
+  border-color: rgba(244, 196, 48, 0.4);
+}
+
+.comm-preset-btn.selected {
+  border-color: #F4C430;
+  background: rgba(244, 196, 48, 0.1);
+}
+
+.comm-preset-btn.selected span {
+  color: #F4C430;
+  font-weight: 600;
+}
+
+.comm-builder-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-add-line {
+  background: rgba(244, 196, 48, 0.1);
+  border: 1px solid rgba(244, 196, 48, 0.2);
+  color: #F4C430;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.btn-add-line:hover {
+  background: rgba(244, 196, 48, 0.2);
+}
+
+.comm-lines-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comm-ingredient-row,
+.comm-instruction-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(244, 196, 48, 0.15);
+  color: #F4C430;
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-remove-line {
+  background: transparent;
+  border: none;
+  color: #8C867E;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.btn-remove-line:hover {
+  color: #FF6347;
+}
+
+.comm-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 640px) {
+  .comm-form-row {
+    flex-direction: column;
+  }
+  .comm-form-row.four-col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .comm-image-presets-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

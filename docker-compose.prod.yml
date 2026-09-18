@@ -1,0 +1,113 @@
+version: '3.8'
+
+services:
+  # --------------------------------------------------------------------------
+  # PostgreSQL Relational Database (Production)
+  # --------------------------------------------------------------------------
+  postgres:
+    image: postgres:16-alpine
+    container_name: recip52_prod_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: \
+      POSTGRES_PASSWORD: \
+      POSTGRES_DB: \
+    volumes:
+      - postgres_prod_data:/var/lib/postgresql/data
+      - ./server/src/db/migrations/001_initial_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+      - ./server/src/db/migrations/002_social_challenges.sql:/docker-entrypoint-initdb.d/02_social.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \ -d \"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # --------------------------------------------------------------------------
+  # Redis In-Memory Cache (Production)
+  # --------------------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: recip52_prod_redis
+    restart: always
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_prod_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # --------------------------------------------------------------------------
+  # Backend Express API Service (Production Node 20 Runtime)
+  # --------------------------------------------------------------------------
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: recip52_prod_backend
+    restart: always
+    environment:
+      PORT: 5000
+      NODE_ENV: production
+      CLIENT_URL: \
+      DATABASE_URL: postgres://\:\@postgres:5432/\
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: \
+      JWT_EXPIRES_IN: \
+      JWT_REFRESH_SECRET: \
+      JWT_REFRESH_EXPIRES_IN: \
+      OPENAI_API_KEY: \
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/api/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # --------------------------------------------------------------------------
+  # Frontend Static Application (Production Nginx Reverse Proxy)
+  # --------------------------------------------------------------------------
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: recip52_prod_frontend
+    restart: always
+    ports:
+      - "\:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  postgres_prod_data:
+    name: recip52_postgres_prod_data
+  redis_prod_data:
+    name: recip52_redis_prod_data

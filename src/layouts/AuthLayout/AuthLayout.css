@@ -1,0 +1,121 @@
+/* ===================================================
+   Recip52 Authentication Layout Styles
+   =================================================== */
+
+.auth-layout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  background: radial-gradient(circle at 50% 10%, #2A241C 0%, #161413 80%);
+  position: relative;
+  overflow: hidden;
+  font-family: var(--body, 'Hanken Grotesk', sans-serif);
+  color: #ffffff;
+}
+
+/* Atmospheric ambient blur circles */
+.auth-glow-orb-1 {
+  position: absolute;
+  top: -10%;
+  left: 20%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(244, 196, 48, 0.18) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.auth-glow-orb-2 {
+  position: absolute;
+  bottom: -10%;
+  right: 20%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(255, 99, 71, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+  background: rgba(32, 28, 26, 0.78);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(244, 196, 48, 0.18);
+  border-radius: 28px;
+  padding: 40px 36px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  position: relative;
+  z-index: 10;
+  animation: authCardFadeIn 0.4s ease-out;
+}
+
+@keyframes authCardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.auth-brand-logo {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #F4C430 0%, #FF6347 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1A1817;
+  box-shadow: 0 8px 24px rgba(244, 196, 48, 0.35);
+  margin-bottom: 12px;
+  text-decoration: none;
+}
+
+.auth-brand-title {
+  font-family: var(--heading, 'EB Garamond', serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.auth-brand-subtitle {
+  font-size: 0.9rem;
+  color: #A39D93;
+}
+
+.auth-back-link {
+  margin-top: 24px;
+  color: #8C867E;
+  text-decoration: none;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+  z-index: 10;
+}
+
+.auth-back-link:hover {
+  color: #F4C430;
+}

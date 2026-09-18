@@ -1,6 +1,7 @@
 import "./Hero.css";
 import FloatingIngredients from "./FloatingIngredients";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 // import LiquidGlass from "../LiquidGlass/LiquidGlass";
 
@@ -80,12 +81,14 @@ useEffect(() => {
                     </p>
 
                     <div className="hero-buttons">
-                        <button className="primary-btn">Download Now</button>
+                        <Link to="/auth/signup" className="primary-btn" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+                            Get Started Free
+                        </Link>
 
-                        <button className="secondary-btn">
+                        <Link to="/auth/login" className="secondary-btn" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                             <Play size={18} />
-                            Watch Demo
-                        </button>
+                            Explore App
+                        </Link>
                     </div>
 
                     <div className="hero-stats">

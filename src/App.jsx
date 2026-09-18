@@ -1,84 +1,105 @@
 import { lazy, Suspense } from 'react';
-// Keep critical components immediate
-import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { QueryClientProvider } from '@tanstack/react-query';
+import queryClient from './api/queryClient.js';
+import { AuthProvider } from './context/AuthContext.jsx';
+import ErrorBoundary from './components/common/ErrorBoundary/ErrorBoundary.jsx';
+import ProtectedRoute from './components/common/ProtectedRoute.jsx';
 
-// Lazy load everything else
-const Features = lazy(() => import("./components/Features/Features"));
-const HowItWorks = lazy(() => import("./components/HowItWorks/HowItWorks"));
-const Testimonials = lazy(() => import("./components/Testimonials/Testimonials"));
-const Contact = lazy(() => import("./components/Contact/Contact"));
-const Footer = lazy(() => import("./components/Footer/Footer"));
+// Layouts
+import AppLayout from './layouts/AppLayout/AppLayout.jsx';
+import AuthLayout from './layouts/AuthLayout/AuthLayout.jsx';
 
-// 🔥 CRITICAL: Lazy load RecipeBackground (contains Three.js)
-const RecipeBackground = lazy(() => import("./components/RecipeBackground/RecipeBackground"));
+// Lazy load pages for code splitting & optimum performance
+const LandingPage = lazy(() => import('./pages/Landing/LandingPage.jsx'));
+const LoginPage = lazy(() => import('./pages/Auth/LoginPage.jsx'));
+const SignupPage = lazy(() => import('./pages/Auth/SignupPage.jsx'));
+const ForgotPasswordPage = lazy(() => import('./pages/Auth/ForgotPasswordPage.jsx'));
+const VerifyEmailPage = lazy(() => import('./pages/Auth/VerifyEmailPage.jsx'));
 
+const DashboardPage = lazy(() => import('./pages/Dashboard/DashboardPage.jsx'));
+const MealsPage = lazy(() => import('./pages/Meals/MealsPage.jsx'));
+const RecipesPage = lazy(() => import('./pages/Recipes/RecipesPage.jsx'));
+const PlansPage = lazy(() => import('./pages/Plans/PlansPage.jsx'));
+const ProfilePage = lazy(() => import('./pages/Profile/ProfilePage.jsx'));
+const WearablesPage = lazy(() => import('./pages/Wearables/WearablesPage.jsx'));
+const CommunityPage = lazy(() => import('./pages/Community/CommunityPage.jsx'));
 
-function App() {
+function LoadingFallback() {
   return (
-    <>
-      <svg
-        width="0"
-        height="0"
-        style={{ position: "absolute" }}
-        aria-hidden="true"
-      >
-        <defs>
-          <filter
-            id="liquid-glass"
-            x="-20%"
-            y="-20%"
-            width="140%"
-            height="140%"
-          >
-            <feTurbulence
-              type="fractalNoise"
-              baseFrequency="0.015"
-              numOctaves="2"
-              seed="8"
-              result="noise"
-            />
-            <feDisplacementMap
-              in="SourceGraphic"
-              in2="noise"
-              scale="12"
-              xChannelSelector="R"
-              yChannelSelector="G"
-            />
-          </filter>
-        </defs>
-      </svg>
-
-      <Suspense fallback={null}>
-        <RecipeBackground />
-      </Suspense>
-
-      <div className="app-content">
-        <Navbar />
-
-        <main>
-          <Hero />
-
-          <Suspense fallback={null}>
-            <Features />
-          </Suspense>
-          <Suspense fallback={null}>
-            <HowItWorks />
-          </Suspense>
-          <Suspense fallback={null}>
-            <Testimonials />
-          </Suspense>
-          <Suspense fallback={null}>
-            <Contact />
-          </Suspense>
-        </main>
-
-        <Suspense fallback={null}>
-          <Footer />
-        </Suspense>
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '60vh',
+        color: '#F4C430',
+        fontFamily: "'Hanken Grotesk', sans-serif",
+      }}
+    >
+      <div style={{ textAlign: 'center' }}>
+        <div
+          style={{
+            width: '36px',
+            height: '36px',
+            border: '3px solid rgba(244, 196, 48, 0.2)',
+            borderTopColor: '#F4C430',
+            borderRadius: '50%',
+            animation: 'appSpin 0.8s linear infinite',
+            margin: '0 auto 12px',
+          }}
+        />
+        <style>{`@keyframes appSpin { to { transform: rotate(360deg); } }`}</style>
       </div>
-    </>
+    </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <BrowserRouter>
+            <Suspense fallback={<LoadingFallback />}>
+              <Routes>
+                {/* 1. Landing Page (Default Public Route) */}
+                <Route path="/" element={<LandingPage />} />
+
+                {/* 2. Authentication Flow */}
+                <Route path="/auth" element={<AuthLayout />}>
+                  <Route index element={<Navigate to="/auth/login" replace />} />
+                  <Route path="login" element={<LoginPage />} />
+                  <Route path="signup" element={<SignupPage />} />
+                  <Route path="forgot-password" element={<ForgotPasswordPage />} />
+                  <Route path="verify-email" element={<VerifyEmailPage />} />
+                </Route>
+
+                {/* 3. Protected Application Shell */}
+                <Route
+                  element={
+                    <ProtectedRoute>
+                      <AppLayout />
+                    </ProtectedRoute>
+                  }
+                >
+                  <Route path="/dashboard" element={<DashboardPage />} />
+                  <Route path="/meals" element={<MealsPage />} />
+                  <Route path="/recipes" element={<RecipesPage />} />
+                  <Route path="/plans" element={<PlansPage />} />
+                  <Route path="/community" element={<CommunityPage />} />
+                  <Route path="/wearables" element={<WearablesPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                </Route>
+
+
+                {/* Catch-all redirect */}
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </Suspense>
+          </BrowserRouter>
+        </AuthProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
+  );
+}
