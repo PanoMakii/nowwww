@@ -3,9 +3,17 @@ import { env } from './env.js';
 
 const { Pool } = pg;
 
+const isRemoteDb =
+  Boolean(env.databaseUrl) &&
+  !env.databaseUrl.includes('localhost') &&
+  !env.databaseUrl.includes('127.0.0.1');
+
 export const pool = new Pool(
   env.databaseUrl
-    ? { connectionString: env.databaseUrl }
+    ? {
+        connectionString: env.databaseUrl,
+        ...(isRemoteDb && { ssl: { rejectUnauthorized: false } }),
+      }
     : {
         host: env.pgHost,
         port: env.pgPort,
